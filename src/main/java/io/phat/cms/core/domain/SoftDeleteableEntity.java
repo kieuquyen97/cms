@@ -1,4 +1,4 @@
-package io.phat.cms.domain;
+package io.phat.cms.core.domain;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter(AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = true)
-public class SoftDeleteableEntity extends AbstractEntity {
+public abstract class SoftDeleteableEntity extends AbstractEntity {
 
 	@Column(nullable = true)
 	private ZonedDateTime deleteAt;

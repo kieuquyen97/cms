@@ -1,5 +1,6 @@
-package io.phat.cms.domain.taxonomy.impl;
+package io.phat.cms.core.domain.taxonomy;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import io.phat.cms.domain.taxonomy.HierarchicalTaxonomyValue;
-import io.phat.cms.domain.taxonomy.Taxonomy;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
@@ -20,17 +19,17 @@ import lombok.ToString;
 @Setter(AccessLevel.PRIVATE)
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class SimpleHierarchicalTaxonomyValue extends SimpleTaxonomyValue implements HierarchicalTaxonomyValue {
+public class DefaultHierarchicalTaxonomyValue extends DefaultTaxonomyValue implements HierarchicalTaxonomyValue {
 
-	@OneToMany(targetEntity = SimpleHierarchicalTaxonomyValue.class)
+	@OneToMany(targetEntity = DefaultHierarchicalTaxonomyValue.class)
 	private Set<HierarchicalTaxonomyValue> children = new HashSet<>();
 
-	public SimpleHierarchicalTaxonomyValue(@NotNull Taxonomy taxonomy, @NotNull String value) {
+	public DefaultHierarchicalTaxonomyValue(@NotNull Taxonomy taxonomy, @NotNull String value) {
 		super(taxonomy, value);
 	}
 
 	@Override
-	public Iterable<HierarchicalTaxonomyValue> getChildren() {
+	public Collection<HierarchicalTaxonomyValue> getChildren() {
 		return Collections.unmodifiableSet(children);
 	}
 

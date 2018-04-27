@@ -1,4 +1,4 @@
-package io.phat.cms.domain;
+package io.phat.cms.core.domain;
 
 import java.util.UUID;
 

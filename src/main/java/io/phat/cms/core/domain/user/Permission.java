@@ -1,10 +1,10 @@
-package io.phat.cms.domain.user;
+package io.phat.cms.core.domain.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 
-import io.phat.cms.domain.AbstractEntity;
+import io.phat.cms.core.domain.AbstractEntity;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

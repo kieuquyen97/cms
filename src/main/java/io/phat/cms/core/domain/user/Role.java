@@ -1,5 +1,6 @@
-package io.phat.cms.domain.user;
+package io.phat.cms.core.domain.user;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import io.phat.cms.domain.AbstractEntity;
+import io.phat.cms.core.domain.AbstractEntity;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -45,7 +46,7 @@ public class Role extends AbstractEntity {
 		permissions.remove(permission);
 	}
 	
-	public Iterable<Permission> getPermissions() {
+	public Collection<Permission> getPermissions() {
 		return Collections.unmodifiableSet(permissions);
 	}
 }

@@ -1,4 +1,4 @@
-package io.phat.cms.domain.user;
+package io.phat.cms.core.domain.user;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import io.phat.cms.domain.AbstractEntity;
+import io.phat.cms.core.domain.AbstractEntity;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,6 +34,7 @@ public class User extends AbstractEntity {
 	@Column(nullable = false)
 	private String password;
 
+	@Column(nullable = false)
 	private ZonedDateTime createdAt;
 
 	@Column(nullable = true)
@@ -55,6 +56,6 @@ public class User extends AbstractEntity {
 		this.role = role;
 
 		// Externalize time-zone as system level
-		this.createdAt = ZonedDateTime.now(ZoneId.of("Greenwhich"));
+		this.createdAt = ZonedDateTime.now(ZoneId.systemDefault());
 	}
 }

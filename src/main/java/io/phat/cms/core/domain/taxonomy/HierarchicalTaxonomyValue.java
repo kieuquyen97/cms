@@ -1,4 +1,4 @@
-package io.phat.cms.domain.taxonomy;
+package io.phat.cms.core.domain.taxonomy;
 
 import java.util.function.Predicate;
 
