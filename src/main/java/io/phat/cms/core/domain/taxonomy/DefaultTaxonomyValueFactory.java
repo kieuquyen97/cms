@@ -1,17 +1,22 @@
 package io.phat.cms.core.domain.taxonomy;
 
-import javax.validation.constraints.NotNull;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
+/**
+ *
+ * @author phatphan
+ *
+ */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DefaultTaxonomyValueFactory {
 
-	public static TaxonomyValue create(@NotNull Taxonomy taxonomy, String value) {
+	public static <T extends TaxonomyValue> T create(@NotNull Taxonomy taxonomy, @NotNull String value) {
 		if (taxonomy.isHierarchy()) {
-			return new DefaultHierarchicalTaxonomyValue(taxonomy, value); 
+			return (T) new DefaultHierarchicalTaxonomyValue(taxonomy, value);
 		}
-		return new DefaultTaxonomyValue(taxonomy, value);
+		return (T) new DefaultTaxonomyValue(taxonomy, value);
 	}
 }

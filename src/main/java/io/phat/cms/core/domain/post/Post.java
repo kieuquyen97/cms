@@ -1,5 +1,15 @@
 package io.phat.cms.core.domain.post;
 
+import io.phat.cms.core.domain.SoftDeletableEntity;
+import io.phat.cms.core.domain.taxonomy.DefaultTaxonomyValue;
+import io.phat.cms.core.domain.taxonomy.TaxonomyValue;
+import io.phat.cms.core.domain.user.User;
+import lombok.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collection;
@@ -9,22 +19,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import io.phat.cms.core.domain.SoftDeleteableEntity;
-import io.phat.cms.core.domain.taxonomy.DefaultTaxonomyValue;
-import io.phat.cms.core.domain.taxonomy.TaxonomyValue;
-import io.phat.cms.core.domain.user.User;
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 /**
  * 
  * @author phatphan
@@ -33,10 +27,10 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter(AccessLevel.PACKAGE)
-@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
+@EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class Post extends SoftDeleteableEntity {
+public class Post extends SoftDeletableEntity {
 
 	private static final Logger LOGGER = Logger.getLogger(Post.class.toString());
 	
@@ -49,7 +43,7 @@ public class Post extends SoftDeleteableEntity {
 	@OneToMany(targetEntity = DefaultTaxonomyValue.class)
 	private Set<TaxonomyValue> taxonomyValues = new HashSet<>();
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private User user;
 	
 	@Setter(AccessLevel.PRIVATE)
@@ -57,7 +51,6 @@ public class Post extends SoftDeleteableEntity {
 	private ZonedDateTime createdAt = ZonedDateTime.now(ZoneId.systemDefault());
 	
 	@Setter(AccessLevel.PRIVATE)
-	@Column(nullable = true)
 	private ZonedDateTime updatedAt;
 	
 	private String title;
@@ -67,7 +60,7 @@ public class Post extends SoftDeleteableEntity {
 	private String content;
 	
 	private Status status = Status.DRAFT;
-	
+
 	void setTaxonomyValues(Collection<TaxonomyValue> taxonomyValues) {
 		for (TaxonomyValue val : taxonomyValues) {
 			if (postType.isTaxonomyRegistered(val.getTaxonomy())) {

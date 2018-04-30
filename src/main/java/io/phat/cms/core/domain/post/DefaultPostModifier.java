@@ -1,11 +1,15 @@
 package io.phat.cms.core.domain.post;
 
-import java.util.HashSet;
-
-import javax.validation.constraints.NotNull;
-
 import io.phat.cms.core.domain.taxonomy.TaxonomyValue;
 
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+
+/**
+ *
+ * @author phatphan
+ *
+ */
 public class DefaultPostModifier extends DefaultPostBuilder implements PostModifier {
 
 	private Post post;
@@ -18,7 +22,7 @@ public class DefaultPostModifier extends DefaultPostBuilder implements PostModif
 	}
 
 	@Override
-	public DefaultPostModifier removeTaxonomyValue(TaxonomyValue taxonomyVal) {
+	public DefaultPostModifier removeTaxonomyValue(@NotNull TaxonomyValue taxonomyVal) {
 		if (this.taxonomyValues.contains(taxonomyVal)) {
 			this.taxonomyValues.remove(taxonomyVal);
 		}

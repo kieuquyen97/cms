@@ -1,25 +1,21 @@
 package io.phat.cms.core.domain.user;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
+import io.phat.cms.core.domain.AbstractEntity;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import io.phat.cms.core.domain.AbstractEntity;
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter(AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = true, of = "name")
 @ToString(callSuper = true)
 public class Role extends AbstractEntity {

@@ -1,15 +1,13 @@
 package io.phat.cms.core.domain.post;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.validation.constraints.NotNull;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import io.phat.cms.core.domain.post.Post.Status;
 import io.phat.cms.core.domain.taxonomy.TaxonomyValue;
 import io.phat.cms.core.domain.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 
@@ -68,7 +66,7 @@ public class DefaultPostBuilder implements PostBuilder {
 	}
 	
 	@Override
-	public PostBuilder setStatus(Status status) {
+	public PostBuilder setStatus(@NotNull Status status) {
 		this.status = status;
 		return this;
 	}

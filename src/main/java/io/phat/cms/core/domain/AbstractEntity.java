@@ -1,34 +1,23 @@
 package io.phat.cms.core.domain;
 
-import java.util.UUID;
+import lombok.*;
 
 import javax.persistence.Id;
-
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import javax.persistence.MappedSuperclass;
+import java.util.UUID;
 
 /**
  * 
  * @author phanphat
  *
  */
-@Getter
+@MappedSuperclass
 @EqualsAndHashCode(of = "generatedId")
 @ToString
 public abstract class AbstractEntity {
 	
 	@Id
+	@Getter
 	@Setter(AccessLevel.PRIVATE)
-	private String generatedId;
-	
-	public AbstractEntity() {
-		this.generatedId = getGeneratedIdentifier();
-	}
-	
-	private String getGeneratedIdentifier() {
-		return UUID.randomUUID().toString();
-	}
+	private String generatedId = UUID.randomUUID().toString();
 }
