@@ -8,7 +8,7 @@ import java.util.Set;
 public class HierarchicalTaxonomyValueDataSource {
 
     public static Set<HierarchicalTaxonomyValue> children = new HashSet<>();
-    public static Taxonomy taxonomy = new Taxonomy("node", "Node", "", true);
+    public static Taxonomy taxonomy = new Taxonomy("node", true);
     public static HierarchicalTaxonomyValue rootNode = DefaultTaxonomyValueFactory.create(taxonomy, "I AM ROOT");
 
     static {

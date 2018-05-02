@@ -14,11 +14,11 @@ public class PostDataSource {
     public static Set<MetaData> metaDataSet = new HashSet<>();
 
     static {
-        Taxonomy catTax = new Taxonomy("category", "Category", "", true);
-        Taxonomy tagTax = new Taxonomy("tag", "Tag", "", true);
+        Taxonomy catTax = new Taxonomy("category", true);
+        Taxonomy tagTax = new Taxonomy("tag", true);
         HierarchicalTaxonomyValue metalCatTaxVal = DefaultTaxonomyValueFactory.create(catTax, "Metal");
 
-        postType = new PostType("album", "Album", "Album");
+        postType = new PostType("album");
         taxonomies.addAll(Arrays.asList(catTax, tagTax));
         taxonomyVals.add(metalCatTaxVal);
 

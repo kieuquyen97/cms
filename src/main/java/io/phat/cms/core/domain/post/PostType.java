@@ -30,17 +30,11 @@ public class PostType extends AbstractEntity {
     @Column(unique = true, nullable = false)
     private String namedId;
 
-    private String name;
-
-    private String description;
-
     @OneToMany
     private Set<Taxonomy> taxonomies = new HashSet<>();
 
-    public PostType(@NotBlank String namedId, @NotNull String name, @NotNull String description) {
+    public PostType(@NotBlank String namedId) {
         this.namedId = namedId;
-        this.name = name;
-        this.description = description;
     }
 
     void registerTaxonomy(@NotNull Taxonomy taxonomy) {

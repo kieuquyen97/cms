@@ -3,13 +3,11 @@ package io.phat.cms.core.domain.taxonomy;
 import io.phat.cms.core.domain.AbstractEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "taxonomy_value")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Setter(AccessLevel.PRIVATE)
 @EqualsAndHashCode(of = {"taxonomy", "value"}, callSuper = true)

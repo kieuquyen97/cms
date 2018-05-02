@@ -24,16 +24,10 @@ public class Taxonomy extends AbstractEntity {
 	@Column(nullable = false, unique = true)
 	private String namedId;
 
-	private String name;
-
-	private String description;
-
 	private boolean hierarchy;
 
-	public Taxonomy(@NotBlank String namedId, @NotNull String name, @NotNull String description, boolean hierarchy) {
+	public Taxonomy(@NotBlank String namedId, boolean hierarchy) {
 		this.namedId = namedId;
-		this.name = name;
-		this.description = description;
 		this.hierarchy = hierarchy;
 	}
 }
