@@ -1,5 +1,8 @@
 package io.phat.cms.core.domain.post;
 
+import io.phat.cms.core.domain.event.ChannelContainer;
+import io.phat.cms.core.domain.post.event.PreArchivePostEvent;
+import io.phat.cms.core.domain.post.event.PreCreatePostEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -16,13 +19,13 @@ import org.springframework.stereotype.Service;
 public class PostServiceProxy implements PostService {
 
     private final PostService postService;
-    private final PostServiceSubject postServiceSubject;
+    private final ChannelContainer channelContainer;
 
     @Autowired
-    public PostServiceProxy(PostServiceSubject postServiceSubject,
-                            @Qualifier("defaultPostService") PostService postService) {
+    public PostServiceProxy(@Qualifier("defaultPostService") PostService postService,
+                            ChannelContainer channelContainer) {
         this.postService = postService;
-        this.postServiceSubject = postServiceSubject;
+        this.channelContainer = channelContainer;
     }
 
     @Override
@@ -35,15 +38,15 @@ public class PostServiceProxy implements PostService {
         return postService.findOne(id);
     }
 
-    // TODO: Raise event pre/post save action
     @Override
     public void save(Post post) {
+        channelContainer.emit(new PreCreatePostEvent(post));
         postService.save(post);
     }
 
-    // TODO: Raise event pre/post archive action
     @Override
     public void archive(String id) {
+        channelContainer.emit(new PreArchivePostEvent(id));
         postService.archive(id);
     }
 }

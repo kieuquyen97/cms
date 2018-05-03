@@ -1,6 +1,6 @@
 package io.phat.cms.core.domain.user;
 
-import io.phat.cms.core.domain.AbstractEntity;
+import io.phat.cms.core.domain.SoftDeletableEntity;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode(of = "username", callSuper = true)
 @ToString(callSuper = true)
-public class User extends AbstractEntity {
+public class User extends SoftDeletableEntity {
 
 	@Column(unique = true, nullable = false)
 	private String username;
