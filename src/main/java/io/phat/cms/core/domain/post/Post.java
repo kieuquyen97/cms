@@ -37,10 +37,10 @@ public class Post extends SoftDeletableEntity {
 	@ManyToOne
 	private PostType postType;
 	
-	@OneToMany
+	@OneToMany(orphanRemoval = true)
 	private Set<MetaData> metaData = new HashSet<>();
 
-	@OneToMany(targetEntity = DefaultTaxonomyValue.class)
+	@OneToMany(targetEntity = DefaultTaxonomyValue.class, orphanRemoval = true)
 	private Set<TaxonomyValue> taxonomyValues = new HashSet<>();
 	
 	@ManyToOne(optional = false)

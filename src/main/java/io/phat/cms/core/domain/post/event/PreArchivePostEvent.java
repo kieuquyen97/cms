@@ -1,14 +1,20 @@
 package io.phat.cms.core.domain.post.event;
 
 import io.phat.cms.core.domain.event.Event;
-import lombok.Getter;
+import io.phat.cms.core.domain.post.Post;
+import lombok.Data;
 
-@Getter
+/**
+ *
+ * @author phatphan
+ *
+ */
+@Data
 public class PreArchivePostEvent implements Event {
 
-    private String postId;
+    private Post post;
 
-    public PreArchivePostEvent(String postId) {
-        this.postId = postId;
+    public PreArchivePostEvent(Post post) {
+        this.post = post;
     }
 }

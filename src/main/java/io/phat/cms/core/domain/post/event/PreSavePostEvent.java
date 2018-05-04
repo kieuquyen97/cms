@@ -2,14 +2,19 @@ package io.phat.cms.core.domain.post.event;
 
 import io.phat.cms.core.domain.event.Event;
 import io.phat.cms.core.domain.post.Post;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
-public class PreCreatePostEvent implements Event {
+/**
+ *
+ * @author phatphan
+ *
+ */
+@Data
+public class PreSavePostEvent implements Event {
 
     private Post post;
 
-    public PreCreatePostEvent(Post post) {
+    public PreSavePostEvent(Post post) {
         this.post = post;
     }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">MyCMS</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/admin.css}"/>
+
+    <!-- Script -->
+    <script src="@{/js/admin.js}"></script>
+</head>
+<body>
+    <aside id="sidebar">
+        <th:block th:replace="/admin/fragments/side-nav">
+            <!-- Side-navigation bar -->
+        </th:block>
+    </aside>
+    <section id="content">
+        <th:block layout:fragment="content">
+            <!-- Place some content here -->
+        </th:block>
+    </section>
+</body>
+</html>
